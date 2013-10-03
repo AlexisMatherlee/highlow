@@ -13,9 +13,8 @@ int main(int argc, const char * argv[])
 
     @autoreleasepool {
         int guess = 0;
-        int turn = 0;
+        int turn = 1;
         int answer = arc4random() % 100 + 1;
-        turn = 1;
         
         
         while (guess != answer && turn <= 5) {
@@ -23,29 +22,24 @@ int main(int argc, const char * argv[])
             NSLog(@"Guess #%i: Enter a number between 1 and 100", turn);
             scanf("%i", &guess);
             
+            if (guess == answer) {
+                NSLog(@"Correct! The answer was %i! It took you %i tries.", answer, turn - 1 );
+            }
+            else if (turn < 5) {
             
-        if (guess != answer && turn < 5) {
-            
-            if (guess > answer) {
+                if (guess > answer) {
                 NSLog(@"Lower!");
-            }
-            else if (guess < answer) {
-                NSLog(@"Higher!");
-            }
-        }
-        else if (guess != answer && turn >= 5) {
-
-            NSLog(@"Sorry! The number was %i! Play again!", answer);
                 }
-        else {
-            NSLog(@"Correct! The answer was %i", answer);
+                else if (guess < answer) {
+                NSLog(@"Higher!");
+                }
             }
+            else {
+                NSLog(@"Sorry! The number was %i! Play again!", answer);
+                }
         turn++;
         } // end of while loop
-        
-        if (guess == answer) {
-            NSLog(@"It took you %i tries", turn - 1 );
-        }
+
     }
     return 0;
 }
