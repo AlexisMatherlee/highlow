@@ -12,11 +12,9 @@ int main(int argc, const char * argv[])
 {
 
     @autoreleasepool {
-        int answer = 0;
         int guess = 0;
         int turn = 0;
-        
-        answer = arc4random() % 100 + 1;
+        int answer = arc4random() % 100 + 1;
         turn = 1;
         
         
